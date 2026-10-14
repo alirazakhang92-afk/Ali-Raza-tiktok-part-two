@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="ur-Latn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0d0d12">
+<title>Ali Raza TikTok</title>
+<style>
+:root{--bg:#0d0d12;--p:#17171f;--l:#2a2a36;--t:#f6f4f8;--m:#9a98a8;--a:#ff3d6e;--b:#2de0c4;box-sizing:border-box}
+*{box-sizing:border-box;margin:0;-webkit-tap-highlight-color:transparent}
+[hidden]{display:none!important}
+html,body{height:100%;background:#000;color:var(--t);font-family:"Trebuchet MS","Segoe UI",system-ui,sans-serif;overflow:hidden}
+#app{position:relative;height:100%;max-width:460px;margin:0 auto;background:var(--bg);overflow:hidden}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+input{font:inherit;color:var(--t)}
+section{position:absolute;inset:0 0 calc(56px + env(safe-area-inset-bottom,0px)) 0;overflow-y:auto}
+.s{width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--l);background:var(--p);margin-bottom:8px}
+.btn{padding:10px 20px;border-radius:10px;background:var(--a);color:#fff;font-weight:700}
+.btn.g{background:var(--p);border:1px solid var(--l)}
+.pad{padding:calc(env(safe-area-inset-top,0px) + 16px) 16px 16px}
+h2{font-size:20px;margin-bottom:12px}
+#login{position:absolute;inset:0;z-index:50;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:24px;text-align:center}
+#login p{color:var(--m);font-size:14px;line-height:1.5}
+#home{overflow:hidden}
+.top{position:absolute;top:0;left:0;right:0;z-index:5;display:flex;justify-content:center;gap:20px;padding:calc(env(safe-area-inset-top,0px) + 12px) 12px 12px;background:linear-gradient(#000a,transparent)}
+.top button{color:#fffa;font-weight:700;font-size:16px;padding:4px 2px}
+.top button.on{color:#fff;border-bottom:2px solid #fff}
+#feed{height:100%;overflow-y:scroll;scroll-snap-type:y mandatory}
+.clip{position:relative;height:100%;scroll-snap-align:start;scroll-snap-stop:always;background:#000;color:#fff}
+.clip video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.shade{position:absolute;inset:0;background:linear-gradient(transparent 55%,#000b);pointer-events:none}
+.info{position:absolute;left:12px;right:80px;bottom:16px;font-size:14px;line-height:1.4}
+.info b{font-size:16px;cursor:pointer}
+.rail{position:absolute;right:8px;bottom:16px;display:flex;flex-direction:column;align-items:center;gap:16px}
+.rail button{display:flex;flex-direction:column;align-items:center;font-size:12px;gap:2px;color:#fff;text-shadow:0 1px 4px #000a}
+.rail .ic{font-size:30px;line-height:1}
+.rail .on .ic{color:var(--a)}
+.empty{padding:140px 24px;text-align:center;color:var(--m)}
+nav{position:absolute;bottom:0;left:0;right:0;height:calc(56px + env(safe-area-inset-bottom,0px));padding-bottom:env(safe-area-inset-bottom,0px);display:flex;justify-content:space-around;align-items:center;background:var(--bg);border-top:1px solid var(--l);z-index:6}
+nav button{display:flex;flex-direction:column;align-items:center;font-size:11px;color:var(--m);min-width:64px}
+nav button.on{color:var(--t)}
+nav .i{font-size:22px}
+.av{width:88px;height:88px;border-radius:50%;margin:8px auto;background:linear-gradient(135deg,var(--a),var(--b)) center/cover;display:grid;place-items:center;font-size:30px;font-weight:800}
+.prof{text-align:center}
+.stats{display:flex;justify-content:center;gap:26px;margin:12px 0}
+.stats b{display:block;font-size:18px}.stats span{font-size:12px;color:var(--m)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;margin-top:16px}
+.grid video{width:100%;aspect-ratio:3/4;object-fit:cover;background:#222;cursor:pointer}
+.wr{display:flex;gap:8px;margin-bottom:8px}.wr>*{flex:1}
+#sheet{position:absolute;left:0;right:0;bottom:0;max-height:70%;background:var(--p);border-radius:18px 18px 0 0;z-index:20;display:none;flex-direction:column;padding:14px}
+#sheet.on{display:flex}
+#cl{overflow-y:auto;flex:1;margin:8px 0}
+.cm{padding:7px 0;font-size:14px}.cm b{color:var(--b)}
+#player{position:absolute;inset:0;z-index:30;background:#000;display:flex;flex-direction:column}
+#player video{flex:1;min-height:0;width:100%;object-fit:contain}
+#player .bar{display:flex;gap:8px;padding:12px;justify-content:space-between}
+#toast{position:absolute;left:50%;top:70px;transform:translateX(-50%);background:#000d;color:#fff;padding:9px 16px;border-radius:99px;font-size:13px;z-index:60;opacity:0;transition:opacity .25s;pointer-events:none;max-width:90%;text-align:center}
+#toast.on{opacity:1}
+progress{width:100%;height:8px;margin-bottom:10px}
+.urow{cursor:pointer;padding:12px 0;border-bottom:1px solid var(--l)}
+</style>
+</head>
+<body>
+<div id="app">
+ <div id="login">
+  <h2 style="margin:0">Ali Raza TikTok</h2>
+  <p>Videos banayein, dekhein aur doston ko follow karein.</p>
+  <button class="btn" id="gbtn">Google se login karein</button>
+  <p id="lerr" style="color:var(--a)"></p>
+ </div>
+ 
+ <section id="home">
+  <div class="top"><button id="t-fy" class="on">Aapke Liye</button><button id="t-fo">Following</button></div>
+  <div id="feed"></div>
+ </section>
+ 
+ <section id="up" hidden>
+  <div class="pad">
+   <h2>Video upload karein</h2>
+   <input type="file" id="file" accept="video/*" class="s">
+   <video id="prev" controls playsinline hidden style="width:100%;border-radius:12px;margin-bottom:10px;max-height:300px"></video>
+   <input class="s" id="cap" maxlength="150" placeholder="Caption likhein… #hashtags">
+   <progress id="pg" max="100" value="0" hidden></progress>
+   <button class="btn" id="post" style="width:100%">Post karein</button>
+   <p style="color:var(--m);font-size:12.5px;margin-top:10px">Video 50 MB se chhoti honi chahiye.</p>
+  </div>
+ </section>
+ 
+ <section id="me" hidden>
+  <div class="pad prof">
+   <button class="btn g" id="back" hidden style="float:left">← Wapis</button>
+   <div class="av" id="mav"></div>
+   <h2 id="mun" style="margin:0"></h2>
+   <div id="mnm" style="margin-top:2px"></div>
+   <p id="mbio" style="color:var(--m);font-size:13px;margin-top:4px"></p>
+   <div class="stats">
+    <div><b id="cg">0</b><span>Following</span></div>
+    <div><b id="cr">0</b><span>Followers</span></div>
+    <div><b id="cv">0</b><span>Videos</span></div>
+    <div><b id="cl2">0</b><span>Likes</span></div>
+   </div>
+   <div id="own">
+    <button class="btn" id="edit">Profile badlein</button>
+    <button class="btn g" id="out">Log out</button>
+    <input type="file" id="pf" accept="image/*" hidden>
+   </div>
+   <div id="oth" hidden><button class="btn" id="fbtn">Follow</button></div>
+   <div id="ep" hidden style="text-align:left;margin-top:14px">
+    <input class="s" id="eun" maxlength="24" placeholder="Username">
+    <input class="s" id="enm" maxlength="40" placeholder="Poora naam">
+    <input class="s" id="ebio" maxlength="80" placeholder="Bio">
+    <button class="btn" id="esave" style="width:100%">Mehfooz karein</button>
+   </div>
+   <div class="grid" id="grid"></div>
+  </div>
+ </section>
+ 
+ <section id="sr" hidden>
+  <div class="pad">
+   <h2>Talash</h2>
+   <input class="s" id="q" placeholder="Username ya #hashtag likhein">
+   <div id="qr"></div>
+  </div>
+ </section>
+
+ <nav>
+  <button data-v="home" class="on"><span class="i">⌂</span>Home</button>
+  <button data-v="sr"><span class="i">⌕</span>Talash</button>
+  <button data-v="up"><span class="i">＋</span>Upload</button>
+  <button data-v="me"><span class="i">☺</span>Main</button>
+ </nav>
+ 
+ <div id="sheet">
+  <div style="display:flex;justify-content:space-between;font-weight:700"><span id="st">Comments</span><button id="cx">✕</button></div>
+  <div id="cl"></div>
+  <div class="wr" id="cin"><input class="s" id="ci" maxlength="200" placeholder="Comment likhein…"><button class="btn" id="cs" style="flex:.4">Bhejein</button></div>
+ </div>
+
+ <div id="player" hidden>
+  <video id="pv" controls playsinline autoplay></video>
+  <div class="bar"><button class="btn g" id="pc">Band karein</button><button class="btn g" id="pd" hidden>Video hatayein</button></div>
+ </div>
+
+ <div id="toast"></div>
+</div>
+ 
+<script type="module">
+import {initializeApp} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
+import {getAuth,GoogleAuthProvider,signInWithPopup,signInWithRedirect,onAuthStateChanged,signOut} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
+import {getFirestore,doc,getDoc,setDoc,updateDoc,deleteDoc,collection,addDoc,query,orderBy,limit,where,getDocs,getCountFromServer,onSnapshot,increment,writeBatch,serverTimestamp} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
+import {getStorage,ref,uploadBytesResumable,getDownloadURL,deleteObject} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-storage.js";
+ 
+const app=initializeApp({apiKey:"AIzaSyDwD0TNncMN30T9-XEvLCc8_JUW1qyKfVc",authDomain:"alirazatiktok-5969f.firebaseapp.com",projectId:"alirazatiktok-5969f",storageBucket:"alirazatiktok-5969f.firebasestorage.app",messagingSenderId:"387023414477",appId:"1:387023414477:web:e265f83f68153c456e7584"});
+const auth=getAuth(app),db=getFirestore(app),st=getStorage(app);
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const fmt=n=>n>=1e6?(n/1e6).toFixed(1)+"M":n>=1e3?(n/1e3).toFixed(1)+"K":n;
+let me=null,md=null,liked=new Set(),fol=new Set(),tab="fy",cur=null,unsub=null,snd=false,io=null,viewUid=null,vids={};
+function toast(m){const t=$("#toast");t.textContent=m;t.classList.add("on");clearTimeout(toast.h);toast.h=setTimeout(()=>t.classList.remove("on"),2600)}
+const err=e=>toast("Masla: "+(e.code||e.message||e));
+ 
+$("#gbtn").onclick=async()=>{$("#lerr").textContent="";const p=new GoogleAuthProvider();try{await signInWithPopup(auth,p)}catch(e){if(e.code==="auth/popup-blocked"||e.code==="auth/operation-not-supported-in-this-environment"){signInWithRedirect(auth,p)}else if(e.code!=="auth/popup-closed-by-user"){$("#lerr").textContent="Login nahi hua: "+e.code}}};
+$("#out").onclick=()=>signOut(auth);
+ 
+onAuthStateChanged(auth,async u=>{
+ if(!u){me=null;$("#login").hidden=false;return}
+ me=u;const r=doc(db,"users",u.uid);let s=await getDoc(r);
+ if(!s.exists()){const un=((u.email||"user").split("@")[0].replace(/[^a-z0-9_.]/gi,"").toLowerCase().slice(0,16)||"user")+Math.floor(Math.random()*90+10);await setDoc(r,{name:u.displayName||"Naya user",un,bio:"",photo:u.photoURL||"",createdAt:serverTimestamp()});s=await getDoc(r)}
+ md=s.data();
+ try{const [a,b]=await Promise.all([getDocs(query(collection(db,"likes"),where("uid","==",u.uid))),getDocs(query(collection(db,"follows"),where("from","==",u.uid)))]);liked=new Set(a.docs.map(d=>d.data().vid));fol=new Set(b.docs.map(d=>d.data().to))}catch(e){err(e)}
+ $("#login").hidden=true;show("home");
+});
+ 
+function show(v,uid){
+ $$("section").forEach(s=>s.hidden=s.id!==v);$$
+("nav button").forEach(b=>b.classList.toggle("on",b.dataset.v===v&&!(v==="me"&&uid&&uid!==me.uid)));
+ $$("#feed video").forEach(x=>x.pause()); if(v==="home")loadFeed();if(v==="me")profile(uid\vert{}\vert{}me.uid); } $$
+("nav button").forEach(b=>b.onclick=()=>show(b.dataset.v));
+$("#t-fy").onclick=()=>{tab="fy";$("#t-fy").classList.add("on");$("#t-fo").classList.remove("on");loadFeed()};
+$("#t-fo").onclick=()=>{tab="fo";$("#t-fo").classList.add("on");$("#t-fy").classList.remove("on");loadFeed()};
+ 
+async function loadFeed(){
+ const f=$("#feed");f.innerHTML=`<div class="empty">Load ho raha hai…</div>`;
+ try{const s=await getDocs(query(collection(db,"videos"),orderBy("createdAt","desc"),limit(30)));
+  let l=s.docs.map(d=>({id:d.id,...d.data()}));if(tab==="fo")l=l.filter(v=>fol.has(v.uid));
+  vids={};l.forEach(v=>vids[v.id]=v);
+  f.innerHTML=l.length?l.map(v=>`<article class="clip" data-id="${v.id}"><video src="${esc(v.url)}" loop playsinline muted preload="metadata"></video><div class="shade"></div>
+  <div class="info"><b data-u="${v.uid}">@${esc(v.un)}</b><div>${esc(v.caption)}</div></div>
+  <div class="rail">${v.uid!==me.uid&&!fol.has(v.uid)?`<button data-a="f"><span class="ic">＋</span>Follow</button>`:""}
+  <button data-a="l" class="${liked.has(v.id)?"on":""}"><span class="ic">♥</span><span class="n">${fmt(v.likes||0)}</span></button>
+  <button data-a="c"><span class="ic">💬</span>${fmt(v.comments||0)}</button><button data-a="s"><span class="ic">➦</span>Share</button></div></article>`).join(""):`<div class="empty">${tab==="fo"?"Jin ko aap follow karte hain un ki videos yahan aayengi.":"Abhi koi video nahi."}</div>`;
+  watch();
+ }catch(e){f.innerHTML=`<div class="empty">Feed load nahi hui.</div>`}
+}
+function watch(){io&&io.disconnect();io=new IntersectionObserver(es=>es.forEach(e=>{const v=e.target.querySelector("video");if(e.isIntersecting){v.muted=!snd;v.play().catch(()=>{})}else{v.pause()}}),{threshold:.7});$$(".clip").forEach(c=>io.observe(c))}
+$("#feed").addEventListener("click",async e=>{
+ const c=e.target.closest(".clip");if(!c)return;const id=c.dataset.id,v=vids[id];
+ const u=e.target.closest("[data-u]");if(u){show("me",u.dataset.u);return}
+ const b=e.target.closest("[data-a]");
+ if(!b){const x=c.querySelector("video");if(!snd){snd=true;x.muted=false}else x.paused?x.play():x.pause();return}
+ const a=b.dataset.a;
+ if(a==="l"){const on=liked.has(id),n=b.querySelector(".n");on?liked.delete(id):liked.add(id);v.likes=(v.likes||0)+(on?-1:1);n.textContent=fmt(v.likes);b.classList.toggle("on",!on);
+  const w=writeBatch(db),lr=doc(db,"likes",id+"_"+me.uid),vr=doc(db,"videos",id);
+  if(on){w.delete(lr);w.update(vr,{likes:increment(-1)})}else{w.set(lr,{vid:id,uid:me.uid});w.update(vr,{likes:increment(1)})}
+  w.commit().catch(err)}
+ if(a==="f"){try{await setDoc(doc(db,"follows",me.uid+"_"+v.uid),{from:me.uid,to:v.uid});fol.add(v.uid);b.remove();toast("Follow kar liya")}catch(x){err(x)}}
+ if(a==="c")openC(id);
+ if(a==="s"){const url=location.href;if(navigator.share)navigator.share({title:"Ali Raza TikTok",text:v.caption,url}).catch(()=>{});else{try{await navigator.clipboard.writeText(url);toast("Link copy ho gaya")}catch(x){}}}
+});
+ 
+function openC(id){cur=id;$("#st").textContent="Comments";$("#cin").hidden=false;$("#sheet").classList.add("on");unsub&&unsub();
+ unsub=onSnapshot(query(collection(db,"videos",id,"comments"),orderBy("createdAt","asc")),s=>{$("#cl").innerHTML=s.docs.map(d=>{const c=d.data();return `<div class="cm"><b>@${esc(c.un)}</b> ${esc(c.text)}</div>`}).join("")||`<p style="color:var(--m)">Abhi koi comment nahi.</p>`},err)}
+$("#cx").onclick=()=>{$("#sheet").classList.remove("on");unsub&&unsub();unsub=null;if(!$("#home").hidden)loadFeed()};
+async function sendC(){const t=$("#ci").value.trim();if(!t\vert{}\vert{}!cur)return;$("#ci").value="";try{await addDoc(collection(db,"videos",cur,"comments"),{uid:me.uid,un:md.un,text:t,createdAt:serverTimestamp()});await updateDoc(doc(db,"videos",cur),{comments:increment(1)})}catch(e){err(e)}}
+$("#cs").onclick=sendC;$("#ci").onkeydown=e=>{if(e.key==="Enter")sendC()};
+ 
+$("#file").onchange=e=>{const f=e.target.files[0];if(!f)return;const p=$("#prev");p.src=URL.createObjectURL(f);p.hidden=false};
+$("#post").onclick=()=>{const f=$("#file").files[0];if(!f){toast("Pehle video chunein");return}if(f.size>50*1024*1024){toast("Video 50 MB se chhoti honi chahiye");return}
+ const b=$("#post");b.disabled=true;const pg=$("#pg");pg.hidden=false;pg.value=0;
+ const path=`videos/${me.uid}/${Date.now()}_${f.name.replace(/[^\w.]/g,"_")}`;const t=uploadBytesResumable(ref(st,path),f,{contentType:f.type||"video/mp4"});
+ t.on("state_changed",s=>{pg.value=s.bytesTransferred/s.totalBytes*100},e=>{b.disabled=false;pg.hidden=true;err(e)},async()=>{
+  try{const url=await getDownloadURL(t.snapshot.ref);await addDoc(collection(db,"videos"),{uid:me.uid,un:md.un,caption:$("#cap").value.trim(),tags:($("#cap").value.match(/#\w+/g)||[]).map(x=>x.toLowerCase()),url,path,likes:0,comments:0,createdAt:serverTimestamp()});
+   $("#file").value="";$("#cap").value="";$("#prev").hidden=true;toast("Video post ho gayi!");show("home")}catch(e){err(e)}b.disabled=false;pg.hidden=true});
+};
+ 
+async function profile(uid){
+ viewUid=uid;const own=uid===me.uid;
+ $("#own").hidden=!own;$("#oth").hidden=own;$("#back").hidden=own;$("#ep").hidden=true;
+ const [us,g,r,vs]=await Promise.all([getDoc(doc(db,"users",uid)),getCountFromServer(query(collection(db,"follows"),where("from","==",uid))),getCountFromServer(query(collection(db,"follows"),where("to","==",uid))),getDocs(query(collection(db,"videos"),where("uid","==",uid)))]);
+ const u=us.data()||{un:"?",name:"",photo:"",bio:""};if(own)md=u;
+ const a=$("#mav");a.style.backgroundImage=u.photo?`url("${u.photo.replace(/"/g,"")}")`:"";a.textContent=u.photo?"":(u.name||u.un||"?")[0].toUpperCase();
+ $("#mun").textContent="@"+u.un;$("#mnm").textContent=u.name\vert{}\vert{}"";$("#mbio").textContent=u.bio||"";
+ const l=vs.docs.map(d=>({id:d.id,...d.data()})).sort((x,y)=>(y.createdAt?.seconds||0)-(x.createdAt?.seconds||0));
+ $("#cg").textContent=g.data().count;$("#cr").textContent=r.data().count;$("#cv").textContent=l.length;$("#cl2").textContent=fmt(l.reduce((s,v)=>s+(v.likes||0),0));
+ $("#fbtn").textContent=fol.has(uid)?"Following ✓":"Follow";
+ $("#grid").innerHTML=l.map(v=>`<video src="${esc(v.url)}#t=0.1" preload="metadata" muted playsinline data-id="${v.id}"></video>`).join("");
+ $("#grid").onclick=e=>{const v=e.target.closest("video");if(!v)return;const x=l.find(y=>y.id===v.dataset.id);$("#pv").src=x.url;$("#player").hidden=false;$("#pd").hidden=!own;$("#pd").onclick=async()=>{if(!confirm("Yeh video hata dein?"))return;try{await deleteDoc(doc(db,"videos",x.id));if(x.path)deleteObject(ref(st,x.path)).catch(()=>{});$("#pc").click();profile(uid)}catch(z){err(z)}}};
+}
+$("#pc").onclick=()=>{$("#pv").pause();$("#pv").removeAttribute("src");$("#player").hidden=true};
+$("#back").onclick=()=>show("home");
+$("#fbtn").onclick=async()=>{const uid=viewUid,r=doc(db,"follows",me.uid+"_"+uid);try{if(fol.has(uid)){await deleteDoc(r);fol.delete(uid)}else{await setDoc(r,{from:me.uid,to:uid});fol.add(uid)}profile(uid)}catch(e){err(e)}};
+$("#edit").onclick=()=>{$("#eun").value=md.un;$("#enm").value=md.name||"";$("#ebio").value=md.bio\vert{}\vert{}"";$("#ep").hidden=false};
+$("#esave").onclick=async()=>{const un=$("#eun").value.trim().replace(/^@/,"").toLowerCase();if(!/^[a-z0-9_.]{3,24}$/.test(un)){toast("Username 3 se 24 harf, number, _ ya . ho");return}
+ try{await updateDoc(doc(db,"users",me.uid),{un,name:$("#enm").value.trim(),bio:$("#ebio").value.trim()});toast("Profile update ho gaya");profile(me.uid)}catch(e){err(e)}};
+$("#mav").onclick=()=>{if(viewUid===me.uid)$("#pf").click()};
+$("#pf").onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{const im=new Image();im.onload=async()=>{const c=document.createElement("canvas");c.width=c.height=256;const s=Math.min(im.width,im.height);c.getContext("2d").drawImage(im,(im.width-s)/2,(im.height-s)/2,s,s,0,0,256,256);
+ try{await updateDoc(doc(db,"users",me.uid),{photo:c.toDataURL("image/jpeg",.8)});toast("Tasveer badal gayi");profile(me.uid)}catch(x){err(x)}};im.src=r.result};r.readAsDataURL(f);e.target.value=""};
+ 
+let qt;$("#q").oninput=()=>{clearTimeout(qt);qt=setTimeout(doQ,350)};
+async function doQ(){const q=$("#q").value.trim().toLowerCase().replace(/^@/,""),o=$("#qr");if(!q){o.innerHTML="";return}
+ try{
+  if(q.startsWith("#")){const s=await getDocs(query(collection(db,"videos"),where("tags","array-contains",q),limit(30)));const l=s.docs.map(d=>({id:d.id,...d.data()}));
+   o.innerHTML=l.length?`<div class="grid">${l.map(v=>`<video src="${esc(v.url)}#t=0.1" preload="metadata" muted playsinline data-id="${v.id}"></video>`).join("")}</div>`:`<p style="color:var(--m)">Is hashtag par koi video nahi.</p>`;
+   o.onclick=e=>{const v=e.target.closest("video");if(!v)return;const x=l.find(y=>y.id===v.dataset.id);$("#pv").src=x.url;$("#pd").hidden=true;$("#player").hidden=false}}
+  else{const s=await getDocs(query(collection(db,"users"),where("un",">=",q),where("un","<=",q+"\uf8ff"),limit(20)));
+   o.innerHTML=s.docs.map(d=>`<div class="urow" data-u="${d.id}">@${esc(d.data().un)} <span style="color:var(--m)">${esc(d.data().name||"")}</span></div>`).join("")||`<p style="color:var(--m)">Koi nahi mila.</p>`;
+   o.onclick=e=>{const r=e.target.closest("[data-u]");if(r)show("me",r.dataset.u)}}
+ }catch(e){err(e)}}
+</script>
+</body>
+</html>
