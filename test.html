@@ -1,0 +1,42 @@
+
+
+Test · HTML
+<!DOCTYPE html>
+<html lang="ur-Latn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Login Test</title>
+<style>
+body{font-family:system-ui,sans-serif;background:#0d0d12;color:#f6f4f8;padding:16px;margin:0}
+button{padding:14px 20px;border-radius:10px;border:0;background:#ff3d6e;color:#fff;font-size:16px;font-weight:700;width:100%;margin:8px 0}
+pre{white-space:pre-wrap;word-break:break-word;background:#17171f;padding:12px;border-radius:10px;font-size:13px;line-height:1.5}
+</style>
+</head>
+<body>
+<h2>Google login jaanch</h2>
+<button id="b">1) Google login test</button>
+<pre id="o">Button dabayein…</pre>
+<script type="module">
+import {initializeApp} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
+import {getAuth,GoogleAuthProvider,signInWithPopup} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
+import {getFirestore,doc,getDoc,setDoc,serverTimestamp} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
+const o=document.getElementById("o"),log=t=>{o.textContent+="\n"+t};
+o.textContent="Page: "+location.host+"\nBrowser: "+navigator.userAgent.slice(0,120);
+const app=initializeApp({apiKey:"AIzaSyDwD0TNncMN30T9-XEvLCc8_JUW1qyKfVc",authDomain:"alirazatiktok-5969f.firebaseapp.com",projectId:"alirazatiktok-5969f",storageBucket:"alirazatiktok-5969f.firebasestorage.app",messagingSenderId:"387023414477",appId:"1:387023414477:web:e265f83f68153c456e7584"});
+const auth=getAuth(app),db=getFirestore(app);
+document.getElementById("b").onclick=async()=>{
+ log("\n[Step 1] Google window khul rahi hai…");
+ let u;
+ try{const r=await signInWithPopup(auth,new GoogleAuthProvider());u=r.user;log("OK: login hua. Email: "+u.email+"\nUID: "+u.uid)}
+ catch(e){log("FAIL Step 1: "+(e.code||"")+" | "+(e.message||""));return}
+ try{const s=await getDoc(doc(db,"users",u.uid));log("OK Step 2: Firestore parha. Profile maujood: "+s.exists())}
+ catch(e){log("FAIL Step 2 (Firestore parhna): "+(e.code||"")+" | "+(e.message||""));return}
+ try{await setDoc(doc(db,"users",u.uid),{testAt:serverTimestamp()},{merge:true});log("OK Step 3: Firestore likha. Sab theek hai!")}
+ catch(e){log("FAIL Step 3 (Firestore likhna): "+(e.code||"")+" | "+(e.message||""))}
+};
+</script>
+</body>
+</html>
+ 
+Claude finished the response
