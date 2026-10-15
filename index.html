@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="ur-Latn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0d0d12">
+<title>Ali Raza TikTok Part 2</title>
+<style>
+:root{--bg:#0d0d12;--p:#17171f;--l:#2a2a36;--t:#f6f4f8;--m:#9a98a8;--a:#ff3d6e;--b:#2de0c4;box-sizing:border-box}
+*{box-sizing:border-box;margin:0;-webkit-tap-highlight-color:transparent}
+[hidden]{display:none!important}
+html,body{height:100%;background:#000;color:var(--t);font-family:"Trebuchet MS","Segoe UI",system-ui,sans-serif;overflow:hidden}
+#app{position:relative;height:100%;max-width:460px;margin:0 auto;background:var(--bg);overflow:hidden}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+input{font:inherit;color:var(--t)}
+section{position:absolute;inset:0 0 calc(56px + env(safe-area-inset-bottom,0px)) 0;overflow-y:auto}
+.s{width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--l);background:var(--p);margin-bottom:8px}
+.btn{padding:10px 20px;border-radius:10px;background:var(--a);color:#fff;font-weight:700}
+.btn.g{background:var(--p);border:1px solid var(--l)}
+.pad{padding:calc(env(safe-area-inset-top,0px) + 16px) 16px 16px}
+h2{font-size:20px;margin-bottom:12px}
+#login{position:absolute;inset:0;z-index:50;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:24px;text-align:center}
+#login p{color:var(--m);font-size:14px;line-height:1.5}
+#home{overflow:hidden}
+.top{position:absolute;top:0;left:0;right:0;z-index:5;display:flex;justify-content:center;gap:20px;padding:calc(env(safe-area-inset-top,0px) + 12px) 12px 12px;background:linear-gradient(#000a,transparent)}
+.top button{color:#fffa;font-weight:700;font-size:16px;padding:4px 2px}
+.top button.on{color:#fff;border-bottom:2px solid #fff}
+#feed{height:100%;overflow-y:scroll;scroll-snap-type:y mandatory}
+.clip{position:relative;height:100%;scroll-snap-align:start;scroll-snap-stop:always;background:#000;color:#fff}
+.clip video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.shade{position:absolute;inset:0;background:linear-gradient(transparent 55%,#000b);pointer-events:none}
+.info{position:absolute;left:12px;right:80px;bottom:16px;font-size:14px;line-height:1.4}
+.info b{font-size:16px;cursor:pointer}
+.rail{position:absolute;right:8px;bottom:16px;display:flex;flex-direction:column;align-items:center;gap:16px}
+.rail button{display:flex;flex-direction:column;align-items:center;font-size:12px;gap:2px;color:#fff;text-shadow:0 1px 4px #000a}
+.rail .ic{font-size:30px;line-height:1}
+.rail .on .ic{color:var(--a)}
+.empty{padding:140px 24px;text-align:center;color:var(--m)}
+nav{position:absolute;bottom:0;left:0;right:0;height:calc(56px + env(safe-area-inset-bottom,0px));padding-bottom:env(safe-area-inset-bottom,0px);display:flex;justify-content:space-around;align-items:center;background:var(--bg);border-top:1px solid var(--l);z-index:6}
+nav button{display:flex;flex-direction:column;align-items:center;font-size:11px;color:var(--m);min-width:64px}
+nav button.on{color:var(--t)}
+nav .i{font-size:22px}
+.av{width:88px;height:88px;border-radius:50%;margin:8px auto;background:linear-gradient(135deg,var(--a),var(--b)) center/cover;display:grid;place-items:center;font-size:30px;font-weight:800}
+.prof{text-align:center}
+.stats{display:flex;justify-content:center;gap:26px;margin:12px 0}
+.stats b{display:block;font-size:18px}.stats span{font-size:12px;color:var(--m)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;margin-top:16px}
+.grid video{width:100%;aspect-ratio:3/4;object-fit:cover;background:#222;cursor:pointer}
+.wr{display:flex;gap:8px;margin-bottom:8px}.wr>*{flex:1}
+#sheet{position:absolute;left:0;right:0;bottom:0;max-height:70%;background:var(--p);border-radius:18px 18px 0 0;z-index:20;display:none;flex-direction:column;padding:14px}
+#sheet.on{display:flex}
+#cl{overflow-y:auto;flex:1;margin:8px 0}
+.cm{padding:7px 0;font-size:14px}.cm b{color:var(--b)}
+#player{position:absolute;inset:0;z-index:30;background:#000;display:flex;flex-direction:column}
+#player video{flex:1;min-height:0;width:100%;object-fit:contain}
+#player .bar{display:flex;gap:8px;padding:12px;justify-content:space-between}
+#toast{position:absolute;left:50%;top:70px;transform:translateX(-50%);background:#000d;color:#fff;padding:9px 16px;border-radius:99px;font-size:13px;z-index:60;opacity:0;transition:opacity .25s;pointer-events:none;max-width:90%;text-align:center}
+#toast.on{opacity:1}
+progress{width:100%;height:8px;margin-bottom:10px}
+#stage{position:absolute;inset:0;z-index:25;background:#000;display:flex;flex-direction:column}
+#stage video{flex:1;min-height:0;width:100%;object-fit:cover}
+.lchat{max-height:130px;overflow-y:auto;padding:6px 12px;font-size:13px;background:#0008}.lchat b{color:var(--b)}
+.urow{cursor:pointer;padding:12px 0;border-bottom:1px solid var(--l)}
+#qr{margin-top:8px}
+:root[data-theme="light"]{--bg:#fff;--p:#f3f1f6;--l:#ddd;--t:#15141a;--m:#6b6878}
+.sg{background:var(--p);border:1px solid var(--l);border-radius:14px;padding:14px;margin-bottom:12px}.sg h3{font-size:15px;margin-bottom:8px}.sg p{color:var(--m);font-size:13px;margin-bottom:8px;line-height:1.5}
+.sr2{display:flex;justify-content:space-between;gap:10px;padding:6px 0;font-size:14px}.sr2 b{text-align:right}
+.sw{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--l);font-size:14px}.sw input{width:22px;height:22px}
+.gear{position:absolute;left:10px;font-size:20px;color:#fff;padding:2px 8px}
+.tk{width:26px;height:26px;vertical-align:middle;flex:none}.tk.xl{width:70px;height:70px;float:right}
+.cchip{position:absolute;right:10px;display:flex;align-items:center;gap:4px;background:#000a;border:1px solid #fff4;border-radius:99px;padding:3px 9px;font-size:13px;color:#ffd24a!important}
+.bal{background:linear-gradient(135deg,#000,#2a1030);color:#fff;border-radius:16px;padding:18px;margin-bottom:14px;border:1px solid var(--l)}.bal b{font-size:28px;display:block}
+.gifts{display:flex;gap:6px;overflow-x:auto;padding:6px 10px;background:#0008}.gifts[hidden]{display:none}
+.chip{flex:none;padding:7px 12px;border-radius:99px;background:var(--p);border:1px solid var(--l);font-size:14px;color:var(--t)}
+.gb{position:absolute;left:50%;top:45%;pointer-events:none;z-index:6;animation:gp 1.6s forwards}
+@keyframes gp{0%{transform:translate(-50%,-50%) scale(.3);opacity:1}70%{transform:translate(-50%,-110%) scale(1.2);opacity:1}100%{transform:translate(-50%,-170%);opacity:0}}
+</style>
+</head>
+<body>
+<div id="app">
+ <svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="tok" viewBox="0 0 100 100"><defs><radialGradient id="tg" cx=".35" cy=".3" r=".9"><stop offset="0" stop-color="#fff2a8"/><stop offset=".55" stop-color="#ffc93c"/><stop offset="1" stop-color="#c78a00"/></radialGradient></defs><circle cx="50" cy="50" r="47" fill="url(#tg)" stroke="#8a5d00" stroke-width="4"/><circle cx="50" cy="50" r="38" fill="none" stroke="#fff9" stroke-width="2.5" stroke-dasharray="4 3"/><text x="50" y="45" text-anchor="middle" font-family="Trebuchet MS,Arial,sans-serif" font-weight="900" font-size="25" fill="#4d3200">ALI</text><text x="50" y="71" text-anchor="middle" font-family="Trebuchet MS,Arial,sans-serif" font-weight="900" font-size="25" fill="#4d3200">RAZA</text></symbol></svg>
+ <div id="login">
+  <svg width="72" height="72" viewBox="0 0 40 40" aria-hidden="true"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff3d6e"/><stop offset="1" stop-color="#2de0c4"/></linearGradient></defs><rect width="40" height="40" rx="11" fill="#000"/><rect x="1.5" y="1.5" width="37" height="37" rx="10" fill="none" stroke="url(#lg)" stroke-width="2.5"/><path d="M16 12l12 8-12 8z" fill="#fff"/><path d="M12.5 14v12" stroke="#2de0c4" stroke-width="2.5" stroke-linecap="round"/></svg>
+  <h2 style="margin:0">Ali Raza TikTok Part 2</h2>
+  <p>Videos banayein, dekhein aur doosron ko follow karein.</p>
+  <button class="btn" id="gbtn">Google se login karein</button>
+  <div style="width:100%;max-width:320px"><p style="margin-bottom:8px">ya mobile number se</p>
+   <div id="ph1"><div class="wr"><input class="s" id="cc" value="+92" list="ccl" style="flex:1" aria-label="Country code"><input class="s" id="pn" inputmode="tel" placeholder="Number" style="flex:2"></div><button class="btn" id="sms" style="width:100%">Code bhejein</button></div>
+   <div id="ph2" hidden><input class="s" id="otp" inputmode="numeric" maxlength="6" placeholder="6 ankon ka code" style="text-align:center;letter-spacing:6px"><button class="btn" id="vfy" style="width:100%">Login karein</button></div>
+   <div id="rc"></div>
+   <datalist id="ccl"><option value="+92">Pakistan</option><option value="+91">India</option><option value="+880">Bangladesh</option><option value="+971">UAE</option><option value="+966">Saudi Arabia</option><option value="+974">Qatar</option><option value="+965">Kuwait</option><option value="+968">Oman</option><option value="+44">UK</option><option value="+1">USA / Canada</option><option value="+49">Germany</option><option value="+33">France</option><option value="+90">Turkey</option><option value="+20">Egypt</option><option value="+234">Nigeria</option><option value="+27">South Africa</option><option value="+61">Australia</option><option value="+60">Malaysia</option><option value="+62">Indonesia</option><option value="+86">China</option></datalist>
+  </div>
+  <p id="lerr" style="color:var(--a)"></p>
+ </div>
+ 
+ <section id="home"><div class="top"><button id="gear" class="gear" aria-label="Settings">⚙</button><button id="t-fy" class="on">Aapke Liye</button><button id="t-fo">Following</button><button id="cchip" class="cchip" aria-label="Wallet"><svg class="tk" viewBox="0 0 100 100"><use href="#tok"/></svg> <span id="cbal">0</span></button></div><div id="feed"></div></section>
+ 
+ <section id="up" hidden><div class="pad">
+  <h2>Video upload karein</h2>
+  <input type="file" id="file" accept="video/*" class="s">
+  <video id="prev" controls playsinline hidden style="width:100%;border-radius:12px;margin-bottom:10px;max-height:300px"></video>
+  <input class="s" id="cap" maxlength="150" placeholder="Caption likhein… #hashtags">
+  <progress id="pg" max="100" value="0" hidden></progress>
+  <button class="btn" id="post" style="width:100%">Post karein</button>
+  <p style="color:var(--m);font-size:12.5px;margin-top:10px">Video 50 MB se chhoti honi chahiye.</p>
+ </div></section>
+ 
+ <section id="me" hidden><div class="pad prof">
+  <button class="btn g" id="back" hidden style="float:left">← Wapis</button>
+  <div class="av" id="mav"></div>
+  <h2 id="mun" style="margin:0"></h2>
+  <div id="mnm" style="margin-top:2px"></div>
+  <p id="mbio" style="color:var(--m);font-size:13px;margin-top:4px"></p>
+  <div class="stats"><div id="sg" style="cursor:pointer"><b id="cg">0</b><span>Following</span></div><div id="sfw" style="cursor:pointer"><b id="cr">0</b><span>Followers</span></div><div><b id="cv">0</b><span>Videos</span></div><div><b id="cl2">0</b><span>Likes</span></div></div>
+  <div id="own"><button class="btn" id="edit">Profile badlein</button> <button class="btn g" id="out">Log out</button> <button class="btn g" id="wbtn">Wallet</button> <button class="btn g" id="setb">⚙ Settings</button><input type="file" id="pf" accept="image/*" hidden></div>
+  <div id="oth" hidden><button class="btn" id="fbtn">Follow</button></div>
+  <div id="ep" hidden style="text-align:left;margin-top:14px">
+   <input class="s" id="eun" maxlength="24" placeholder="Username">
+   <input class="s" id="enm" maxlength="40" placeholder="Poora naam">
+   <input class="s" id="ebio" maxlength="80" placeholder="Bio">
+   <div class="wr"><button class="btn" id="esave">Mehfooz karein</button><button class="btn g" id="epic">Tasveer badlein</button></div>
+  </div>
+  <div class="grid" id="grid"></div>
+ </div></section>
+ 
+ <section id="sr" hidden><div class="pad"><h2>Talash</h2><input class="s" id="q" placeholder="Username ya #hashtag likhein"><div id="qr"></div></div></section>
+ <section id="lv" hidden><div class="pad"><h2>Live</h2><button class="btn" id="golive" style="width:100%;margin-bottom:12px">🔴 Live aayein</button><p style="color:var(--m);font-size:12.5px;margin-bottom:10px">Live shuru karne ke liye 1,000 followers chahiye.</p><div id="ll"></div></div></section>
+ <section id="wal" hidden><div class="pad">
+  <h2>Wallet</h2>
+  <div class="bal"><svg class="tk xl" viewBox="0 0 100 100"><use href="#tok"/></svg><span>Ali Raza Coins</span><b id="wc">0</b><span id="wd2"></span></div>
+  <div class="wr"><button class="btn" id="chk">Rozana check-in +20</button><button class="btn g" id="cc2">Coins → $</button></div>
+  <button class="btn g" id="dc2" style="width:100%;margin-bottom:10px">💎 Diamonds → $</button>
+  <p style="color:var(--m);font-size:12.5px;margin-bottom:16px;line-height:1.5">Doosron ki video 5 second dekhne par 5 coins milte hain (har video par ek baar). 1,000 coins = $1.00. 1,000 diamonds = $0.50. Diamonds Live mein gift milne par milte hain.</p>
+  <h2>Paise nikalein</h2>
+  <select class="s" id="wdm"><option>Easypaisa</option><option>JazzCash</option><option>Bank</option><option>PayPal</option></select>
+  <input class="s" id="wdn" placeholder="Number / account / email">
+  <input class="s" id="wda" inputmode="decimal" placeholder="Raqam $ mein (kam az kam 1)">
+  <button class="btn" id="wdb" style="width:100%">Darkhwast bhejein</button>
+  <p style="color:var(--m);font-size:12.5px;margin:8px 0 16px;line-height:1.5">Aap ki darkhwast owner dekhta hai aur khud Easypaisa/JazzCash/bank se ada karta hai. Is mein kuch din lag sakte hain, aur ghalat ya nakli coins wali darkhwast radd ho sakti hai.</p>
+  <h2>Meri darkhwastein</h2><div id="wh"></div>
+  <div id="adm" hidden><h2 style="margin-top:20px">Admin: intezar mein</h2><div id="al"></div></div>
+ </div></section>
+ <section id="set" hidden><div class="pad">
+  <button class="btn g" id="sback" style="margin-bottom:12px">← Wapis</button>
+  <h2>Settings</h2>
+  <div class="sg"><h3>Account aur login</h3>
+   <div class="sr2"><span>Login tareeqa</span><b id="sl">—</b></div>
+   <div class="sr2"><span>User ID</span><b id="su" style="font-size:11px;word-break:break-all"></b></div>
+   <div class="wr" style="margin-top:8px"><button class="btn g" id="sprof">Profile badlein</button><button class="btn g" id="sout">Log out</button></div>
+   <p style="margin-top:8px">Doosre Google account ya number se login karne ke liye pehle Log out karein.</p></div>
+  <div class="sg"><h3>Live</h3><p id="slive"></p><div class="wr"><button class="btn" id="slg">🔴 Live aayein</button><button class="btn g" id="slw">Live dekhein</button></div></div>
+  <div class="sg"><h3>Wallet aur paise</h3><p id="swal"></p><button class="btn g" id="swb" style="width:100%">Wallet kholein</button></div>
+  <div class="sg"><h3>Ap ki pasand</h3>
+   <label class="sw"><span>Roshan theme</span><input type="checkbox" id="stheme"></label>
+   <label class="sw"><span>Video awaaz ke saath shuru ho</span><input type="checkbox" id="ssnd"></label>
+   <label class="sw"><span>Coins milne par message</span><input type="checkbox" id="stoast"></label></div>
+  <div class="sg"><h3>Madad aur maloomat</h3><p>Ali Raza TikTok Part 2 · Version 1.0</p><p>Kisi galat video ko report karne ke liye video ke 🚩 par tap karein.</p></div>
+  <div class="sg" id="sadm" hidden><h3>Admin</h3><div class="sr2" id="ast"></div>
+   <input class="s" id="bun" placeholder="Username (ban ya unban ke liye)">
+   <div class="wr"><button class="btn" id="bban">Ban karein</button><button class="btn g" id="bunb">Ban hatayein</button></div>
+   <h3 style="margin-top:14px">Reports</h3><div id="rl"></div>
+   <button class="btn g" id="awd" style="width:100%;margin-top:10px">Paise ki darkhwastein dekhein</button></div>
+ </div></section>
+ <nav>
+  <button data-v="home" class="on"><span class="i">⌂</span>Home</button>
+  <button data-v="sr"><span class="i">⌕</span>Talash</button>
+  <button data-v="up"><span class="i">＋</span>Upload</button>
+  <button data-v="lv"><span class="i">●</span>Live</button>
+  <button data-v="me"><span class="i">☺</span>Main</button>
+ </nav>
+ 
+ <div id="sheet"><div style="display:flex;justify-content:space-between;font-weight:700"><span id="st">Comments</span><button id="cx" aria-label="Band karein">✕</button></div><div id="cl"></div><div class="wr" id="cin"><input class="s" id="ci" maxlength="200" placeholder="Comment likhein…" style="margin:0"><button class="btn" id="cs" style="flex:.4">Bhejein</button></div></div>
+ <div id="player" hidden><video id="pv" controls playsinline autoplay></video><div class="bar"><button class="btn g" id="pc">Band karein</button><button class="btn g" id="pd" hidden>Video hatayein</button></div></div>
+ <div id="stage" hidden><video id="lvv" playsinline autoplay></video>
+  <div style="position:absolute;top:0;left:0;right:0;display:flex;justify-content:space-between;align-items:center;padding:calc(env(safe-area-inset-top,0px) + 12px) 12px 12px;background:linear-gradient(#000a,transparent)"><b id="lh"></b><span id="lvw">👁 <span id="lvc">0</span></span><button class="btn" id="lend">Band karein</button></div>
+  <div class="lchat" id="lchat" aria-live="polite"></div>
+  <div class="gifts" id="gl"></div>
+  <div class="wr" style="padding:8px"><input class="s" id="lin" maxlength="150" placeholder="Kuch likhein…" style="margin:0"><button class="btn" id="lsend" style="flex:.4">Bhejein</button></div></div>
+ <div id="toast"></div>
+</div>
+ 
+<script type="module">
+import {initializeApp} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
+import {getAuth,GoogleAuthProvider,signInWithPopup,signInWithRedirect,getRedirectResult,onAuthStateChanged,signOut,RecaptchaVerifier,signInWithPhoneNumber} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
+import {getFirestore,doc,getDoc,setDoc,updateDoc,deleteDoc,collection,addDoc,query,orderBy,limit,where,getDocs,getCountFromServer,onSnapshot,increment,writeBatch,serverTimestamp} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
+import {getStorage,ref,uploadBytesResumable,getDownloadURL,deleteObject} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-storage.js";
+ 
+const app=initializeApp({apiKey:"AIzaSyDwD0TNncMN30T9-XEvLCc8_JUW1qyKfVc",authDomain:"alirazatiktok-5969f.firebaseapp.com",projectId:"alirazatiktok-5969f",storageBucket:"alirazatiktok-5969f.firebasestorage.app",messagingSenderId:"387023414477",appId:"1:387023414477:web:e265f83f68153c456e7584"});
+const auth=getAuth(app),db=getFirestore(app),st=getStorage(app);
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const fmt=n=>n>=1e6?(n/1e6).toFixed(1)+"M":n>=1e3?(n/1e3).toFixed(1)+"K":n;
+let me=null,md=null,liked=new Set(),fol=new Set(),tab="fy",cur=null,unsub=null,snd=false,io=null,viewUid=null,vids={};
+function toast(m){const t=$("#toast");t.textContent=m;t.classList.add("on");clearTimeout(toast.h);toast.h=setTimeout(()=>t.classList.remove("on"),2600)}
+const err=e=>toast("Masla: "+(e.code||e.message||e));
+ 
+// Google Login सुधारा गया है ताकि पॉप-अप और रीडायरेक्ट दोनों सुरक्षित तरीके से काम करें
+getRedirectResult(auth).catch(e => { if(e && e.code) err(e); });
+
+$("#gbtn").onclick = async () => {
+  $("#lerr").textContent = "";
+  const p = new GoogleAuthProvider();
+  try {
+    await signInWithPopup(auth, p);
+  } catch (e) {
+    if (e.code === "auth/popup-blocked" || e.code === "auth/popup-closed-by-user" || e.code === "auth/cancelled-popup-request") {
+      try {
+        await signInWithRedirect(auth, p);
+      } catch (errRedirect) {
+        $("#lerr").textContent = "Login nahi ho saka: " + (errRedirect.code || errRedirect.message);
+      }
+    } else if (e.code === "auth/unauthorized-domain") {
+      $("#lerr").textContent = "Yeh website Firebase ke Authorized domains mein shamil nahi hai.";
+    } else {
+      $("#lerr").textContent = "Google Login masla: " + (e.code || e.message);
+    }
+  }
+};
+
+$("#out").onclick=()=>signOut(auth);
+ 
+onAuthStateChanged(auth,async u=>{
+ if(!u){me=null;$("#login").hidden=false;return}
+ me=u;const r=doc(db,"users",u.uid);let s=await getDoc(r);
+ if(!s.exists()){const un=((u.email||"user").split("@")[0].replace(/[^a-z0-9_.]/gi,"").toLowerCase().slice(0,16)||"user")+Math.floor(Math.random()*90+10);await setDoc(r,{name:u.displayName||"Naya user",un,bio:"",photo:u.photoURL||"",createdAt:serverTimestamp()});s=await getDoc(r)}
+ md=s.data();
+ try{const [a,b]=await Promise.all([getDocs(query(collection(db,"likes"),where("uid","==",u.uid))),getDocs(query(collection(db,"follows"),where("from","==",u.uid)))]);liked=new Set(a.docs.map(d=>d.data().vid));fol=new Set(b.docs.map(d=>d.data().to))}catch(e){err(e)}
+ $("#login").hidden=true;await loadW().catch(err);show("home");
+});
+ 
+function show(v,uid){
+ $$("section").forEach(s=>s.hidden=s.id!==v);$$("nav button").forEach(b=>b.classList.toggle("on",b.dataset.v===v&&!(v==="me"&&uid&&uid!==me.uid)));
+ $$("#feed video").forEach(x=>x.pause());
+ if(v==="home")loadFeed();if(v==="me")profile(uid||me.uid);if(v==="lv")loadLives();if(v==="wal")walletLoad();if(v==="set")settingsLoad();
+}
+$$("nav button").forEach(b=>b.onclick=()=>show(b.dataset.v));
+$("#t-fy").onclick=()=>{tab="fy";$("#t-fy").classList.add("on");$("#t-fo").classList.remove("on");loadFeed()};
+$("#t-fo").onclick=()=>{tab="fo";$("#t-fo").classList.add("on");$("#t-fy").classList.remove("on");loadFeed()};
+ 
+async function loadFeed(){
+ const f=$("#feed");f.innerHTML=`<div class="empty">Load ho raha hai…</div>`;
+ try{const s=await getDocs(query(collection(db,"videos"),orderBy("createdAt","desc"),limit(30)));
+  let l=s.docs.map(d=>({id:d.id,...d.data()}));if(tab==="fo")l=l.filter(v=>fol.has(v.uid));
+  vids={};l.forEach(v=>vids[v.id]=v);
+  f.innerHTML=l.length?l.map(v=>`<article class="clip" data-id="${v.id}"><video src="${esc(v.url)}" loop playsinline muted preload="metadata"></video><div class="shade"></div>
+  <div class="info"><b data-u="${v.uid}">@${esc(v.un)}</b><div>${esc(v.caption)}</div></div>
+  <div class="rail">${v.uid!==me.uid&&!fol.has(v.uid)?`<button data-a="f" aria-label="Follow"><span class="ic">＋</span>Follow</button>`:""}
+  <button data-a="l" class="${liked.has(v.id)?"on":""}"><span class="ic">♥</span><span class="n">${fmt(v.likes||0)}</span></button>
+  <button data-a="c"><span class="ic">💬</span>${fmt(v.comments||0)}</button><button data-a="s"><span class="ic">➦</span>Share</button><button data-a="r"><span class="ic">🚩</span>Report</button></div></article>`).join(""):`<div class="empty">${tab==="fo"?"Jin ko aap follow karte hain un ki videos yahan aayengi.":"Abhi koi video nahi. Upload tab se pehli video daalein!"}</div>`;
+  watch();
+ }catch(e){f.innerHTML=`<div class="empty">Feed load nahi hui (${esc(e.code||e.message)}). Firestore Rules check karein.</div>`}
+}
+function watch(){io&&io.disconnect();io=new IntersectionObserver(es=>es.forEach(e=>{const v=e.target.querySelector("video");if(e.isIntersecting){v.muted=!snd;v.play().catch(()=>{});rewardT(e.target)}else{v.pause();clearTimeout(rt[e.target.dataset.id])}}),{threshold:.7});$$(".clip").forEach(c=>io.observe(c))}
+$("#feed").addEventListener("click",async e=>{
+ const c=e.target.closest(".clip");if(!c)return;const id=c.dataset.id,v=vids[id];
+ const u=e.target.closest("[data-u]");if(u){show("me",u.dataset.u);return}
+ const b=e.target.closest("[data-a]");
+ if(!b){const x=c.querySelector("video");if(!snd){snd=true;x.muted=false}else x.paused?x.play():x.pause();return}
+ const a=b.dataset.a;
+ if(a==="l"){const on=liked.has(id),n=b.querySelector(".n");on?liked.delete(id):liked.add(id);v.likes=(v.likes||0)+(on?-1:1);n.textContent=fmt(v.likes);b.classList.toggle("on",!on);
+  const w=writeBatch(db),lr=doc(db,"likes",id+"_"+me.uid),vr=doc(db,"videos",id);
+  if(on){w.delete(lr);w.update(vr,{likes:increment(-1)})}else{w.set(lr,{vid:id,uid:me.uid});w.update(vr,{likes:increment(1)})}
+  w.commit().catch(err)}
+ if(a==="f"){try{await setDoc(doc(db,"follows",me.uid+"_"+v.uid),{from:me.uid,to:v.uid});fol.add(v.uid);b.remove();toast("Follow kar liya")}catch(x){err(x)}}
+ if(a==="c")openC(id);
+ if(a==="r"){const why=prompt("Report ki wajah likhein (jaise: gandi video, nakli, dhoka)");if(why&&why.trim()){try{await setDoc(doc(db,"reports",me.uid+"_"+id),{vid:id,vuid:v.uid,vun:v.un,by:me.uid,why:why.trim().slice(0,200),createdAt:serverTimestamp()});toast("Report bhej di gayi, shukriya")}catch(x){err(x)}}}
+ if(a==="s"){const url=location.href;if(navigator.share)navigator.share({title:"Ali Raza TikTok Part 2",text:v.caption,url}).catch(()=>{});else{try{await navigator.clipboard.writeText(url);toast("Link copy ho gaya")}catch(x){toast("Copy mumkin nahi")}}}
+});
+ 
+function openC(id){cur=id;$("#st").textContent="Comments";$("#cin").hidden=false;$("#sheet").classList.add("on");unsub&&unsub();
+ unsub=onSnapshot(query(collection(db,"videos",id,"comments"),orderBy("createdAt","asc")),s=>{$("#cl").innerHTML=s.docs.map(d=>{const c=d.data();return `<div class="cm"><b>@${esc(c.un)}</b> ${esc(c.text)}</div>`}).join("")||`<p style="color:var(--m)">Abhi koi comment nahi. Pehle aap karein.</p>`},err)}
+$("#cx").onclick=()=>{$("#sheet").classList.remove("on");unsub&&unsub();unsub=null;if(!$("#home").hidden)loadFeed()};
+async function sendC(){const t=$("#ci").value.trim();if(!t\vert{}\vert{}!cur)return;$("#ci").value="";try{await addDoc(collection(db,"videos",cur,"comments"),{uid:me.uid,un:md.un,text:t,createdAt:serverTimestamp()});await updateDoc(doc(db,"videos",cur),{comments:increment(1)})}catch(e){err(e)}}
+$("#cs").onclick=sendC;$("#ci").onkeydown=e=>{if(e.key==="Enter")sendC()};
+ 
+$("#file").onchange=e=>{const f=e.target.files[0];if(!f)return;const p=$("#prev");p.src=URL.createObjectURL(f);p.hidden=false};
+$("#post").onclick=()=>{const f=$("#file").files[0];if(!f){toast("Pehle video chunein");return}if(f.size>50*1024*1024){toast("Video 50 MB se chhoti honi chahiye");return}
+ const b=$("#post");b.disabled=true;const pg=$("#pg");pg.hidden=false;pg.value=0;
+ const path=`videos/${me.uid}/${Date.now()}_${f.name.replace(/[^\w.]/g,"_")}`;const t=uploadBytesResumable(ref(st,path),f,{contentType:f.type||"video/mp4"});
+ t.on("state_changed",s=>{pg.value=s.bytesTransferred/s.totalBytes*100},e=>{b.disabled=false;pg.hidden=true;err(e)},async()=>{
+  try{const url=await getDownloadURL(t.snapshot.ref);await addDoc(collection(db,"videos"),{uid:me.uid,un:md.un,caption:$("#cap").value.trim(),tags:($("#cap").value.match(/#\w+/g)||[]).map(x=>x.toLowerCase()),url,path,likes:0,comments:0,createdAt:serverTimestamp()});
+   $("#file").value="";$("#cap").value="";$("#prev").hidden=true;toast("Video post ho gayi!");show("home")}catch(e){err(e)}b.disabled=false;pg.hidden=true});
+};
+ 
+async function profile(uid){
+ viewUid=uid;const own=uid===me.uid;
+ $("#own").hidden=!own;$("#oth").hidden=own;$("#back").hidden=own;$("#ep").hidden=true;
+ const [us,g,r,vs]=await Promise.all([getDoc(doc(db,"users",uid)),getCountFromServer(query(collection(db,"follows"),where("from","==",uid))),getCountFromServer(query(collection(db,"follows"),where("to","==",uid))),getDocs(query(collection(db,"videos"),where("uid","==",uid)))]);
+ const u=us.data()||{un:"?",name:"",photo:"",bio:""};if(own)md=u;
+ const a=$("#mav");a.style.backgroundImage=u.photo?`url("${u.photo.replace(/"/g,"")}")`:"";a.textContent=u.photo?"":(u.name||u.un||"?")[0].toUpperCase();
+ $("#mun").textContent="@"+u.un;$("#mnm").textContent=u.name\vert{}\vert{}"";$("#mbio").textContent=u.bio||"";
+ const l=vs.docs.map(d=>({id:d.id,...d.data()})).sort((x,y)=>(y.createdAt?.seconds||0)-(x.createdAt?.seconds||0));
+ $("#cg").textContent=g.data().count;$("#cr").textContent=r.data().count;$("#cv").textContent=l.length;$("#cl2").textContent=fmt(l.reduce((s,v)=>s+(v.likes||0),0));
+ $("#fbtn").textContent=fol.has(uid)?"Following ✓":"Follow";
+ $("#grid").innerHTML=l.map(v=>`<video src="${esc(v.url)}#t=0.1" preload="metadata" muted playsinline data-id="${v.id}"></video>`).join("");
+ $("#grid").onclick=e=>{const v=e.target.closest("video");if(!v)return;const x=l.find(y=>y.id===v.dataset.id);$("#pv").src=x.url;$("#player").hidden=false;$("#pd").hidden=!own;$("#pd").onclick=async()=>{if(!confirm("Yeh video hata dein?"))return;try{await deleteDoc(doc(db,"videos",x.id));if(x.path)deleteObject(ref(st,x.path)).catch(()=>{});$("#pc").click();profile(uid)}catch(z){err(z)}}};
+}
+$("#pc").onclick=()=>{$("#pv").pause();$("#pv").removeAttribute("src");$("#player").hidden=true};
+$("#back").onclick=()=>show("home");
+$("#fbtn").onclick=async()=>{const uid=viewUid,r=doc(db,"follows",me.uid+"_"+uid);try{if(fol.has(uid)){await deleteDoc(r);fol.delete(uid)}else{await setDoc(r,{from:me.uid,to:uid});fol.add(uid)}profile(uid)}catch(e){err(e)}};
+$("#edit").onclick=()=>{$("#eun").value=md.un;$("#enm").value=md.name||"";$("#ebio").value=md.bio\vert{}\vert{}"";$("#ep").hidden=false};
+$("#esave").onclick=async()=>{const un=$("#eun").value.trim().replace(/^@/,"").toLowerCase();if(!/^[a-z0-9_.]{3,24}$/.test(un)){toast("Username 3 se 24 harf, number, _ ya . ho");return}
+ try{await updateDoc(doc(db,"users",me.uid),{un,name:$("#enm").value.trim(),bio:$("#ebio").value.trim()});toast("Profile update ho gaya");profile(me.uid)}catch(e){err(e)}};
+$("#epic").onclick=$("#mav").onclick=()=>{if(viewUid===me.uid)$("#pf").click()};
+$("#pf").onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{const im=new Image();im.onload=async()=>{const c=document.createElement("canvas");c.width=c.height=256;const s=Math.min(im.width,im.height);c.getContext("2d").drawImage(im,(im.width-s)/2,(im.height-s)/2,s,s,0,0,256,256);
+ try{await updateDoc(doc(db,"users",me.uid),{photo:c.toDataURL("image/jpeg",.8)});toast("Tasveer badal gayi");profile(me.uid)}catch(x){err(x)}};im.src=r.result};r.readAsDataURL(f);e.target.value=""};
+ 
+/* ---- Mobile number login ---- */
+let rcv=null,conf=null;
+$("#sms").onclick=async()=>{const n=$("#pn").value.replace(/\D/g,"").replace(/^0+/,""),c=$("#cc").value.replace(/\D/g,"");$("#lerr").textContent="";
+ if(n.length<6||!c){$("#lerr").textContent="Durust country code aur number likhein";return}
+ try{rcv=rcv||new RecaptchaVerifier(auth,"rc",{size:"invisible"});conf=await signInWithPhoneNumber(auth,"+"+c+n,rcv);$("#ph1").hidden=true;$("#ph2").hidden=false;toast("Code bhej diya gaya")}
+ catch(e){$("#lerr").textContent=e.code==="auth/billing-not-enabled"?"Number se login ke liye Firebase ka Blaze plan chahiye.":e.code==="auth/operation-not-allowed"?"Firebase mein Phone login on nahi hai.":"Code nahi gaya: "+e.code;try{rcv&&rcv.clear()}catch(x){}rcv=null}};
+$("#vfy").onclick=async()=>{try{await conf.confirm($("#otp").value.trim())}catch(e){$("#lerr").textContent="Ghalat code: "+(e.code||"")}};
+ 
+/* ---- Search ---- */
+let qt;$("#q").oninput=()=>{clearTimeout(qt);qt=setTimeout(doQ,350)};
+async function doQ(){const q=$("#q").value.trim().toLowerCase().replace(/^@/,""),o=$("#qr");if(!q){o.innerHTML="";return}
+ try{
+  if(q.startsWith("#")){const s=await getDocs(query(collection(db,"videos"),where("tags","array-contains",q),limit(30)));const l=s.docs.map(d=>({id:d.id,...d.data()}));
+   o.innerHTML=l.length?`<div class="grid">${l.map(v=>`<video src="${esc(v.url)}#t=0.1" preload="metadata" muted playsinline data-id="${v.id}"></video>`).join("")}</div>`:`<p style="color:var(--m)">Is hashtag par koi video nahi.</p>`;
+   o.onclick=e=>{const v=e.target.closest("video");if(!v)return;const x=l.find(y=>y.id===v.dataset.id);$("#pv").src=x.url;$("#pd").hidden=true;$("#player").hidden=false}}
+  else{const s=await getDocs(query(collection(db,"users"),where("un",">=",q),where("un","<=",q+"\uf8ff"),limit(20)));
+   o.innerHTML=s.docs.map(d=>`<div class="urow" data-u="${d.id}">@${esc(d.data().un)} <span style="color:var(--m)">${esc(d.data().name||"")}</span></div>`).join("")||`<p style="color:var(--m)">Koi nahi mila.</p>`;
+   o.onclick=e=>{const r=e.target.closest("[data-u]");if(r)show("me",r.dataset.u)}}
+ }catch(e){err(e)}}
+ 
+/* ---- Followers / Following lists ---- */
+async function userList(k){const f=k==="g"?"from":"to",t=k==="g"?"to":"from";
+ try{const s=await getDocs(query(collection(db,"follows"),where(f,"==",viewUid),limit(50)));const us=await Promise.all(s.docs.map(d=>getDoc(doc(db,"users",d.data()[t]))));
+  unsub&&unsub();unsub=null;$("#st").textContent=k==="g"?"Following":"Followers";$("#cin").hidden=true;
+  $("#cl").innerHTML=us.filter(u=>u.exists()).map(u=>`<div class="urow" data-u="${u.id}">@${esc(u.data().un)} <span style="color:var(--m)">${esc(u.data().name||"")}</span></div>`).join("")||`<p style="color:var(--m)">Abhi koi nahi.</p>`;
+  $("#sheet").classList.add("on")}catch(e){err(e)}}
+$("#sg").onclick=()=>userList("g");$("#sfw").onclick=()=>userList("r");
+$("#cl").onclick=e=>{const r=e.target.closest("[data-u]");if(r){$("#cx").click();show("me",r.dataset.u)}};
+ 
+/* ---- Live (WebRTC, signalling through Firestore) ---- */
+const LIVE_MIN=1000;
+const RTC={iceServers:[{urls:"stun:stun.l.google.com:19302"}]};
+let pcs={},lstream=null,lhost=null,lun=[],isHost=false;
+const sub=(q,f)=>{lun.push(onSnapshot(q,f,()=>{}))};
+async function loadLives(){const o=$("#ll");o.innerHTML=`<p style="color:var(--m)">Load ho raha hai…</p>`;
+ try{const s=await getDocs(query(collection(db,"lives"),where("active","==",true),limit(20)));
+  o.innerHTML=s.docs.map(d=>`<div class="urow" data-h="${d.id}" data-n="${esc(d.data().un)}">🔴 @${esc(d.data().un)} <span style="color:var(--m)">live hai</span></div>`).join("")||`<p style="color:var(--m)">Abhi koi live nahi.</p>`;
+  o.onclick=e=>{const r=e.target.closest("[data-h]");if(r)watchLive(r.dataset.h,r.dataset.n)}}catch(e){o.innerHTML="";err(e)}}
+function openStage(host,name){isHost=host;$("#stage").hidden=false;$("#lh").textContent=(host?"🔴 ":"")+"@"+name;$("#lvw").hidden=!host;$("#gl").hidden=host;$("#gl").innerHTML=GF.map((g,i)=>`<button class="chip" data-g="${i}">${g[0]} ${g[2]}</button>`).join("");$("#lvc").textContent=0;$("#lchat").innerHTML=""}
+function chatListen(h){sub(query(collection(db,"lives",h,"chat"),orderBy("createdAt","asc"),limit(60)),s=>{const c=$("#lchat");c.innerHTML=s.docs.slice(-30).map(d=>`<div><b>@${esc(d.data().un)}</b> ${esc(d.data().text)}</div>`).join("");c.scrollTop=c.scrollHeight;s.docChanges().forEach(ch=>{const d=ch.doc.data();if(ch.type==="added"&&d.gift&&(!d.createdAt||Date.now()-d.createdAt.toMillis()<15000))burst(d.gift,d.amt)})})}
+const addIce=pc=>cs=>cs.docChanges().forEach(x=>x.type==="added"&&pc.addIceCandidate(x.doc.data()).catch(()=>{}));
+$("#golive").onclick=async()=>{
+ try{const c=await getCountFromServer(query(collection(db,"follows"),where("to","==",me.uid)));if(c.data().count<LIVE_MIN){toast("Live ke liye "+LIVE_MIN+" followers chahiye");return}}catch(e){err(e);return}
+ try{lstream=await navigator.mediaDevices.getUserMedia({video:{facingMode:"user"},audio:true})}catch(e){toast("Camera aur mic ki ijazat dein");return}
+ lhost=me.uid;try{await setDoc(doc(db,"lives",me.uid),{un:md.un,active:true,createdAt:serverTimestamp()})}catch(e){err(e);return}
+ openStage(true,md.un);const v=$("#lvv");v.srcObject=lstream;v.muted=true;v.play().catch(()=>{});
+ sub(collection(db,"lives",me.uid,"peers"),s=>{$("#lvc").textContent=s.size;s.docChanges().forEach(async ch=>{if(ch.type!=="added")return;const vid=ch.doc.id,data=ch.doc.data();if(!data.offer||pcs[vid])return;
+  const pc=new RTCPeerConnection(RTC);pcs[vid]=pc;lstream.getTracks().forEach(t=>pc.addTrack(t,lstream));
+  pc.onicecandidate=e=>e.candidate&&addDoc(collection(db,"lives",me.uid,"peers",vid,"h"),e.candidate.toJSON());
+  await pc.setRemoteDescription(data.offer);const a=await pc.createAnswer();await pc.setLocalDescription(a);await updateDoc(ch.doc.ref,{answer:{type:a.type,sdp:a.sdp}});
+  sub(collection(db,"lives",me.uid,"peers",vid,"v"),addIce(pc))})});
+ chatListen(me.uid)};
+async function watchLive(h,name){lhost=h;openStage(false,name);const pc=new RTCPeerConnection(RTC);pcs.v=pc;
+ pc.addTransceiver("video",{direction:"recvonly"});pc.addTransceiver("audio",{direction:"recvonly"});
+ pc.ontrack=e=>{const v=$("#lvv");v.srcObject=e.streams[0];v.muted=false;v.play().catch(()=>{})};
+ const pr=doc(db,"lives",h,"peers",me.uid);
+ pc.onicecandidate=e=>e.candidate&&addDoc(collection(db,"lives",h,"peers",me.uid,"v"),e.candidate.toJSON());
+ try{const o=await pc.createOffer();await pc.setLocalDescription(o);await setDoc(pr,{offer:{type:o.type,sdp:o.sdp},un:md.un})}catch(e){err(e);endLive();return}
+ let got=false;sub(pr,async s=>{const d=s.data();if(d&&d.answer&&!got){got=true;await pc.setRemoteDescription(d.answer);sub(collection(db,"lives",h,"peers",me.uid,"h"),addIce(pc))}});
+ sub(doc(db,"lives",h),s=>{if(!s.exists()||!s.data().active){toast("Live khatam ho gayi");endLive()}});
+ chatListen(h)}
+async function endLive(){lun.forEach(f=>{try{f()}catch(x){}});lun=[];Object.values(pcs).forEach(p=>{try{p.close()}catch(x){}});pcs={};
+ if(lstream){lstream.getTracks().forEach(t=>t.stop());lstream=null}
+ if(isHost&&lhost){try{await updateDoc(doc(db,"lives",lhost),{active:false})}catch(x){}}
+ else if(lhost&&me){try{await deleteDoc(doc(db,"lives",lhost,"peers",me.uid))}catch(x){}}
+ const v=$("#lvv");v.srcObject=null;$("#stage").hidden=true;lhost=null;isHost=false;if(!$("#lv").hidden)loadLives()}
+$("#lend").onclick=endLive;
+async function lsend(){const t=$("#lin").value.trim();if(!t\vert{}\vert{}!lhost)return;$("#lin").value="";try{await addDoc(collection(db,"lives",lhost,"chat"),{uid:me.uid,un:md.un,text:t,createdAt:serverTimestamp()})}catch(e){err(e)}}
+$("#lsend").onclick=lsend;$("#lin").onkeydown=e=>{if(e.key==="Enter")lsend()};
+addEventListener("pagehide",()=>{if(isHost&&lhost){try{updateDoc(doc(db,"lives",lhost),{active:false})}catch(x){}}});
+ 
+/* ---- Wallet, coins, gifts, withdrawals ---- */
+const GF=[["🌹","Rose",10],["❤️","Heart",50],["🍩","Donut",100],["🦁","Lion",500],["🚀","Rocket",1000],["🏰","Castle",3000],["🌌","Galaxy",10000]];
+let W={coins:0,dia:0,cents:0};const wref=u=>doc(db,"wallets",u);
+function wUI(){$("#cbal").textContent=fmt(W.coins);$("#wc").textContent=W.coins.toLocaleString()+" coins";$("#wd2").textContent="💎 "+W.dia.toLocaleString()+" · Cash: $"+(W.cents/100).toFixed(2)}
+async function loadW(){const s=await getDoc(wref(me.uid));if(!s.exists()){await setDoc(wref(me.uid),{coins:0,dia:0,cents:0,last:""});W={coins:0,dia:0,cents:0}}else{const d=s.data();W={coins:d.coins||0,dia:d.dia||0,cents:d.cents||0}}wUI()}
+$("#cchip").onclick=$("#wbtn").onclick=()=>show("wal");
+const rt={},claimed=new Set();let tdy=0,tdd="";
+function rewardT(c){const id=c.dataset.id,v=vids[id];if(!v||v.uid===me.uid||claimed.has(id))return;clearTimeout(rt[id]);rt[id]=setTimeout(()=>claim(id),5000)}
+async function claim(id){const d=new Date().toISOString().slice(0,10);if(tdd!==d){tdd=d;tdy=0}if(tdy>=100||claimed.has(id))return;claimed.add(id);
+ try{const b=writeBatch(db);b.set(doc(db,"rewards",me.uid+"_"+id),{uid:me.uid,vid:id});b.update(wref(me.uid),{coins:increment(5),last:id});await b.commit();W.coins+=5;tdy+=5;wUI();if(pref.q!==false)toast("+5 coins")}catch(e){}}
+$("#chk").onclick=async()=>{const id=me.uid+"_"+Math.floor(Date.now()/864e5);
+ try{const b=writeBatch(db);b.set(doc(db,"checkins",id),{uid:me.uid});b.update(wref(me.uid),{coins:increment(20)});await b.commit();W.coins+=20;wUI();toast("+20 coins")}catch(e){toast("Aaj ka check-in ho chuka hai")}};
+$("#cc2").onclick=async()=>{const n=Math.floor(W.coins/1000)*1000;if(!n){toast("Kam az kam 1,000 coins chahiye");return}
+ try{await updateDoc(wref(me.uid),{coins:increment(-n),cents:increment(n/10)});W.coins-=n;W.cents+=n/10;wUI();toast("Tabdeel hua: $"+(n/1000).toFixed(2))}catch(e){err(e)}};
+$("#dc2").onclick=async()=>{const n=Math.floor(W.dia/1000)*1000;if(!n){toast("Kam az kam 1,000 diamonds chahiye");return}
+ try{await updateDoc(wref(me.uid),{dia:increment(-n),cents:increment(n/20)});W.dia-=n;W.cents+=n/20;wUI();toast("Tabdeel hua: $"+(n/2000).toFixed(2))}catch(e){err(e)}};
+$("#wdb").onclick=async()=>{const amt=Math.round(parseFloat($("#wda").value)*100),det=$("#wdn").value.trim();
+ if(!(amt>=100)){toast("Kam az kam $1 nikal sakte hain");return}if(amt>W.cents){toast("Cash balance kaafi nahi");return}if(det.length<5){toast("Number ya account sahi likhein");return}
+ const id=me.uid+"_"+Date.now();
+ try{const b=writeBatch(db);b.set(doc(db,"withdrawals",id),{uid:me.uid,un:md.un,method:$("#wdm").value,details:det,cents:amt,status:"pending",createdAt:serverTimestamp()});b.update(wref(me.uid),{cents:increment(-amt),last:id});await b.commit();
+  W.cents-=amt;wUI();$("#wda").value="";loadWd();toast("Darkhwast bhej di gayi")}catch(e){err(e)}};
+async function loadWd(){const s=await getDocs(query(collection(db,"withdrawals"),where("uid","==",me.uid)));const l=s.docs.map(d=>d.data()).sort((a,b)=>(b.createdAt?.seconds||0)-(a.createdAt?.seconds||0));
+ $("#wh").innerHTML=l.map(w=>`<div class="urow">$${(w.cents/100).toFixed(2)} → ${esc(w.method)} · <b>${w.status==="paid"?"Ada ho gaya ✅":w.status==="rejected"?"Radd (paise wapas mile)":"Intezar mein"}</b></div>`).join("")||`<p style="color:var(--m)">Abhi koi darkhwast nahi.</p>`}
+async function loadAdm(){const s=await getDocs(query(collection(db,"withdrawals"),where("status","==","pending")));
+ $("#al").innerHTML=s.docs.map(d=>{const w=d.data();return `<div class="urow">@${esc(w.un)} · $${(w.cents/100).toFixed(2)} · ${esc(w.method)}: ${esc(w.details)}<div class="wr" style="margin-top:6px"><button class="btn" data-ok="${d.id}">Ada ho gaya</button><button class="btn g" data-no="${d.id}">Radd karein</button></div></div>`}).join("")||`<p style="color:var(--m)">Koi darkhwast intezar mein nahi.</p>`;
+ $("#al").onclick=async e=>{const ok=e.target.dataset.ok,no=e.target.dataset.no;if(!ok&&!no)return;const id=ok||no,w=s.docs.find(d=>d.id===id).data();
+  try{if(ok)await updateDoc(doc(db,"withdrawals",id),{status:"paid"});else{const b=writeBatch(db);b.update(doc(db,"withdrawals",id),{status:"rejected"});b.update(wref(w.uid),{cents:increment(w.cents)});await b.commit()}toast("Ho gaya");loadAdm()}catch(x){err(x)}}}
+async function walletLoad(){try{await loadW();loadWd();const a=await getDoc(doc(db,"admins",me.uid));$("#adm").hidden=!a.exists();if(a.exists())loadAdm()}catch(e){err(e)}}
+function burst(g,amt){const d=document.createElement("div");d.className="gb";d.textContent=g;d.style.fontSize=(amt>=1000?150:amt>=500?110:76)+"px";$("#stage").appendChild(d);setTimeout(()=>d.remove(),1700)}
+$("#gl").onclick=async e=>{const bt=e.target.closest("[data-g]");if(!bt||!lhost)return;if(isHost){toast("Aap khud ko gift nahi de sakte");return}
+ const g=GF[bt.dataset.g];if(W.coins<g[2]){toast("Coins kaafi nahi: "+g[1]);return}
+ const id=me.uid+"_"+Date.now();
+ try{const b=writeBatch(db);b.set(doc(db,"gifts",id),{from:me.uid,to:lhost,live:lhost,amount:g[2],name:g[1],createdAt:serverTimestamp()});
+  b.update(wref(me.uid),{coins:increment(-g[2]),last:id});b.update(wref(lhost),{dia:increment(g[2]),last:id});
+  b.set(doc(collection(db,"lives",lhost,"chat")),{uid:me.uid,un:md.un,text:"ne "+g[1]+" "+g[0]+" bheja",gift:g[0],amt:g[2],createdAt:serverTimestamp()});
+  await b.commit();W.coins-=g[2];wUI()}catch(x){err(x)}};
+ 
+/* ---- Settings, preferences, admin ---- */
+let pref={};try{pref=JSON.parse(localStorage.getItem("ar_pref")||"{}")}catch(e){}
+const savePref=()=>{try{localStorage.setItem("ar_pref",JSON.stringify(pref))}catch(e){}};
+function applyPref(){document.documentElement.dataset.theme=pref.light?"light":"dark";snd=!!pref.snd}
+applyPref();
+$("#gear").onclick=$("#setb").onclick=()=>show("set");
+$("#sback").onclick=()=>show("home");
+$("#sout").onclick=()=>signOut(auth);
+$("#sprof").onclick=()=>{show("me");setTimeout(()=>$("#edit").click(),300)};
+$("#slw").onclick=()=>show("lv");
+$("#slg").onclick=()=>{show("lv");$("#golive").click()};
+$("#swb").onclick=()=>show("wal");
+$("#awd").onclick=()=>show("wal");
+$("#stheme").onchange=e=>{pref.light=e.target.checked;savePref();applyPref()};
+$("#ssnd").onchange=e=>{pref.snd=e.target.checked;savePref();applyPref()};
+$("#stoast").onchange=e=>{pref.q=e.target.checked;savePref()};
+async function settingsLoad(){const u=auth.currentUser;$("#sl").textContent=u.phoneNumber?"Mobile: "+u.phoneNumber:u.email?"Google: "+u.email:"—";$("#su").textContent=u.uid;
+ $("#stheme").checked=!!pref.light;$("#ssnd").checked=!!pref.snd;$("#stoast").checked=pref.q!==false;
+ $("#swal").textContent="Coins: "+W.coins.toLocaleString()+" · 💎 "+W.dia.toLocaleString()+" · Cash: $"+(W.cents/100).toFixed(2);
+ try{const c=await getCountFromServer(query(collection(db,"follows"),where("to","==",me.uid))),n=c.data().count;$("#slive").textContent=n>=LIVE_MIN?"✅ Aap Live aa sakte hain.":"🔒 Live aane ke liye "+LIVE_MIN+" followers chahiye (abhi "+n+").";}catch(e){}
+ try{const a=await getDoc(doc(db,"admins",me.uid));$("#sadm").hidden=!a.exists();if(a.exists())adminLoad()}catch(e){}}
+async function adminLoad(){try{const cnt=async q=>(await getCountFromServer(q)).data().count;
+ const [u,v,w,r]=await Promise.all([cnt(collection(db,"users")),cnt(collection(db,"videos")),cnt(query(collection(db,"withdrawals"),where("status","==","pending"))),cnt(collection(db,"reports"))]);
+ $("#ast").textContent="Users "+u+" · Videos "+v+" · Paise intezar mein "+w+" · Reports "+r;
+ const s=await getDocs(query(collection(db,"reports"),limit(20)));
+ $("#rl").innerHTML=s.docs.map(d=>{const x=d.data();return `<div class="urow">🚩 @${esc(x.vun)}: ${esc(x.why)}<div class="wr" style="margin-top:6px"><button class="btn" data-rv="${d.id}" data-vid="${esc(x.vid)}">Video hatayein</button><button class="btn g" data-rx="${d.id}">Report hatayein</button></div></div>`}).join("")||`<p>Koi report nahi.</p>`;
+ $("#rl").onclick=async e=>{const a=e.target.dataset;try{if(a.rv){await deleteDoc(doc(db,"videos",a.vid));await deleteDoc(doc(db,"reports",a.rv))}else if(a.rx){await deleteDoc(doc(db,"reports",a.rx))}else return;toast("Ho gaya");adminLoad()}catch(x){err(x)}}}catch(e){err(e)}}
+async function banU(on){const un=$("#bun").value.trim().replace(/^@/,"").toLowerCase();if(!un)return;
+ try{const s=await getDocs(query(collection(db,"users"),where("un","==",un),limit(1)));if(s.empty){toast("Yeh username nahi mila");return}const id=s.docs[0].id;
+  if(on)await setDoc(doc(db, "banned", id), { un, at: serverTimestamp() }); else await deleteDoc(doc(db, "banned", id)); toast(on ? "Ban kar diya" : "Ban hata diya")}catch(e){err(e)}}
+$("#bban").onclick=()=>banU(true);$("#bunb").onclick=()=>banU(false);
+</script>
+</body>
+</html>
